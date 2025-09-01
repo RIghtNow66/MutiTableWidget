@@ -1,31 +1,48 @@
 #include "StateTableDelegate.h"
+#include "MutiTableWidget.h"
 #include <QPainter>
 #include <QApplication>
-#include <QBrush>
-#include <QColor>
 
 const int COMBINED_STATUS_COLUMN = 2;
 
 StateTableDelegate::StateTableDelegate(QObject* parent) : QStyledItemDelegate(parent) {}
 
-// 复制 RealtimeDataDelegate 的高亮逻辑
-void StateTableDelegate::initStyleOption(QStyleOptionViewItem* option, const QModelIndex& index) const
-{
-    QStyledItemDelegate::initStyleOption(option, index);
-    if (index.data(Qt::UserRole).toBool() && !(option->state & QStyle::State_Selected)) {
-        option->backgroundBrush = QBrush(QColor("#FFEAEA"));
-        // ...
-    }
-}
 
-// 复制 FaultyStatusDelegate 的 paint 逻辑
 void StateTableDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     QStyleOptionViewItem viewOption(option);
-    initStyleOption(&viewOption, index); // 应用高亮
+    initStyleOption(&viewOption, index);
+
+    if (const BaseDataTable* table = qobject_cast<const BaseDataTable*>(parent())) {
+        QFont font = viewOption.font;
+        font.setPointSize(table->getCurrentPointSize());
+        viewOption.font = font;
+    }
 
     if (index.column() == COMBINED_STATUS_COLUMN) {
-        // ... 此处粘贴 State_table 的画圆点代码（绿/红）...
+        viewOption.text = QString();
+        QApplication::style()->drawControl(QStyle::CE_ItemViewItem, &viewOption, painter, viewOption.widget);
+
+        QString status = index.data(Qt::DisplayRole).toString();
+        painter->save();
+        painter->setRenderHint(QPainter::Antialiasing, true);
+        int margin = 4;
+        QRectF ellipseRect = option.rect.adjusted(margin, margin, -margin, -margin);
+        int diameter = qMin(ellipseRect.width(), ellipseRect.height());
+        ellipseRect.setWidth(diameter);
+        ellipseRect.setHeight(diameter);
+        ellipseRect.moveCenter(option.rect.center());
+
+        if (status == "0") {
+            painter->setBrush(QBrush(QColor("#28a745"))); // Green
+        }
+        else if (status == "1") {
+            painter->setBrush(QBrush(QColor("#dc3545"))); // Red
+        }
+
+        painter->setPen(Qt::NoPen);
+        painter->drawEllipse(ellipseRect);
+        painter->restore();
     }
     else {
         QStyledItemDelegate::paint(painter, viewOption, index);

@@ -17,9 +17,13 @@ public:
     // 用于从外部(Data_table)更新筛选状态的公共函数
     void setFilterState(int logicalIndex, bool isActive);
 
+    bool getFilterState(int logicalIndex) const; // 用于查询筛选状态
+
 signals:
     // 这个信号保持不变
     void filterTriggered(int logicalIndex);
+
+    void clearFilterTriggered(int logicalIndex);
 
 protected:
     // 重写 paintSection 来绘制图标
@@ -41,4 +45,6 @@ private:
 
     // 获取指定列的图标绘制区域
     QRect getIconRect(const QRect& sectionRect, int logicalIndex) const;
+
+
 };

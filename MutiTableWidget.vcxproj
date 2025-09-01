@@ -101,7 +101,6 @@
     <ClCompile Include="RealtimeDataTable.cpp" />
     <ClCompile Include="RealtimeTableDelegate.cpp" />
     <ClCompile Include="StateTableDelegate.cpp" />
-    <QtRcc Include="MutiTableWidget.qrc" />
     <QtUic Include="MutiTableWidget.ui" />
     <QtMoc Include="MutiTableWidget.h" />
     <ClCompile Include="MutiTableWidget.cpp" />
@@ -131,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="PaginatedDataTable.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="MutiTableWidget.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

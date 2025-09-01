@@ -10,8 +10,6 @@ D:\AAA_myLibrary\MutiTableWidget\StateTableDelegate.cpp;D:\AAA_myLibrary\MutiTab
 D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\MutiTableWidget.obj
 D:\AAA_myLibrary\MutiTableWidget\main.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\main.obj
 D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\rcc\qrc_MutiTableWidget.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qrc_MutiTableWidget.obj
-D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_MutiTableWidget.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_MutiTableWidget.obj
-D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_NonSortingHeaderView.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_NonSortingHeaderView.obj
 D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_HighlightDelegate.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_HighlightDelegate.obj
 D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_FaultyStatusTable.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_FaultyStatusTable.obj
 D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_RealtimeDataTable.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_RealtimeDataTable.obj
@@ -20,3 +18,5 @@ D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_RealtimeTa
 D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_FaultyTableDelegate.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_FaultyTableDelegate.obj
 D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_StateTableDelegate.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_StateTableDelegate.obj
 D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_PaginatedDataTable.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_PaginatedDataTable.obj
+D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_MutiTableWidget.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_MutiTableWidget.obj
+D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\moc\moc_NonSortingHeaderView.cpp;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\moc_NonSortingHeaderView.obj

@@ -13,7 +13,4 @@ class CombinedStateTable : public BaseDataTable {
     Q_OBJECT
 public:
     explicit CombinedStateTable(QWidget* parent = nullptr);
-
-protected:
-    void checkAndHighlightRow(int displayRow, const QVector<QString>& rowData) override;
 };

@@ -10,4 +10,5 @@ public:
     explicit RealtimeTableDelegate(QObject* parent = nullptr);
 protected:
     void initStyleOption(QStyleOptionViewItem* option, const QModelIndex& index) const override;
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 };

@@ -29,6 +29,8 @@ public slots:
     void onSectionResized(int logicalIndex, int oldSize, int newSize);
     void applyFilter(int logicalIndex);
 
+    void clearFilter(int logicalIndex);
+
 signals:
     void pageChanged(int currentPage, int totalPages);
 
@@ -38,7 +40,7 @@ protected:
     void resizeEvent(QResizeEvent* event) override;
 
     // ★ 模板方法：定义高亮检查的接口，由子类实现具体逻辑
-    virtual void checkAndHighlightRow(int displayRow, const QVector<QString>& rowData) {
+    virtual void checkAndHighlightRow(int row) {
         // 基类默认实现为空，即不做任何高亮处理
     }
 
@@ -47,6 +49,8 @@ protected:
     int m_currentPage = 1;
     int m_totalPages = 0;
     const int m_pageSize = 15;
+
+    int m_currentPointSize = 12;
 
 private:
     // --- 所有私有方法和成员变量 ---
@@ -58,7 +62,6 @@ private:
 
     // ... 其他所有相同的私有成员 ...
     QElapsedTimer m_resizeThrottleTimer;
-    int m_currentPointSize = 12;
     QVector<double> m_columnProportions;
     bool m_isInitialLayout = true;
     QVector<QVector<QString>> m_filteredData;

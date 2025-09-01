@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="MutiTableWidget">
+    <qresource prefix="/MutiTableWidget">
+        <file>m_icon/hourglass.png</file>
+        <file>m_icon/table.png</file>
     </qresource>
 </RCC>

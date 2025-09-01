@@ -3,13 +3,15 @@
 
 
 #include <QWidget>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
+#include <QVector>
+#include <QString>
+#include <QStringList>
 
-// 前向声明，避免包含完整的头文件
 class BaseDataTable;
 class QPushButton;
 class QLabel;
+class QHBoxLayout;
+class QVBoxLayout;
 
 class PaginatedDataTable : public QWidget
 {
@@ -29,12 +31,13 @@ private slots:
 
 private:
     QVBoxLayout* m_mainLayout;
-    QHBoxLayout* navLayout;
-
     BaseDataTable* m_table; // 使用基类指针
+
+    QWidget* m_navControlsWidget;
+    QHBoxLayout* m_navControlsLayout;
     QPushButton* m_firstPageButton;
     QPushButton* m_prevPageButton;
-    QLabel* m_pageLabel;
     QPushButton* m_nextPageButton;
     QPushButton* m_lastPageButton;
+    QLabel* m_pageLabel;
 };

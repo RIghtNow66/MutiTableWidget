@@ -23,9 +23,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="MutiTableWidget.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
     <QtUic Include="MutiTableWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -96,5 +93,10 @@
     <QtMoc Include="PaginatedDataTable.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="MutiTableWidget.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

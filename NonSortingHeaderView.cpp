@@ -8,6 +8,7 @@
 #include <QCursor>
 #include <QFontMetrics>
 
+
 NonSortingHeaderView::NonSortingHeaderView(Qt::Orientation orientation, QWidget* parent)
     : QHeaderView(orientation, parent)
 {
@@ -77,7 +78,7 @@ void NonSortingHeaderView::paintSection(QPainter* painter, const QRect& rect, in
     // 2. 如果当前列处于筛选状态，则在上面叠加绘制我们的图标
     if (m_filterStates.value(logicalIndex, false))
     {
-        QPixmap pixmap(":/state_table/hourglass.png"); // 从资源文件加载图标
+        QPixmap pixmap(":/MutiTableWidget/m_icon/hourglass.png"); // 从资源文件加载图标
         if (!pixmap.isNull())
         {
             QRect iconRect = getIconRect(rect, logicalIndex);
@@ -95,7 +96,7 @@ void NonSortingHeaderView::mousePressEvent(QMouseEvent* event)
         if (logicalIndex != -1) {
             // 检查当前列是否有筛选图标
             if (m_filterStates.value(logicalIndex, false)) {
-                // 【修复】使用 sectionPosition 和 sectionSize 来安全地构建矩形
+                // 使用 sectionPosition 和 sectionSize 来安全地构建矩形
                 int x = sectionPosition(logicalIndex);
                 int width = sectionSize(logicalIndex);
                 QRect sectionRect(x, 0, width, height()); // 构建出当前表头项的完整矩形
@@ -124,11 +125,25 @@ void NonSortingHeaderView::showContextMenu(const QPoint& pos)
     int logicalIndex = logicalIndexAt(pos);
     if (logicalIndex != -1) {
         QMenu contextMenu(this);
-        QAction* filterAction = contextMenu.addAction("筛选");
+        QAction* action;
 
-        connect(filterAction, &QAction::triggered, [this, logicalIndex]() {
-            emit filterTriggered(logicalIndex);
-            });
+        // ★ 关键改动：根据状态连接到不同的信号
+        if (m_filterStates.value(logicalIndex, false)) {
+            // 如果已筛选，菜单项为“取消筛选”
+            action = contextMenu.addAction("取消筛选");
+            // 连接到“清除筛选”的专属信号
+            connect(action, &QAction::triggered, [this, logicalIndex]() {
+                emit clearFilterTriggered(logicalIndex);
+                });
+        }
+        else {
+            // 如果未筛选，菜单项为“筛选”
+            action = contextMenu.addAction("筛选");
+            // 连接到“打开/编辑筛选”的信号
+            connect(action, &QAction::triggered, [this, logicalIndex]() {
+                emit filterTriggered(logicalIndex);
+                });
+        }
 
         contextMenu.exec(mapToGlobal(pos));
     }
@@ -164,4 +179,9 @@ QRect NonSortingHeaderView::getIconRect(const QRect& sectionRect, int logicalInd
     }
 
     return QRect(x, y, iconSize, iconSize);
+}
+
+bool NonSortingHeaderView::getFilterState(int logicalIndex) const
+{
+    return m_filterStates.value(logicalIndex, false);
 }

@@ -2,60 +2,48 @@
 #include "MutiTableWidget.h" // 包含基类头文件
 #include <QPushButton>
 #include <QLabel>
-
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QIcon>
+#include <QFont>
 
 PaginatedDataTable::PaginatedDataTable(BaseDataTable* tableToHost, QWidget* parent)
     : QWidget(parent), m_table(tableToHost) // 直接使用传入的指针
 {
-    QFont globalFont("Microsoft YaHei");
-    globalFont.setStyleHint(QFont::SansSerif);
-    this->setFont(globalFont);
+    m_navControlsWidget = new QWidget(this);
+    m_firstPageButton = new QPushButton("<< 首页", m_navControlsWidget);
+    m_prevPageButton = new QPushButton("< 上一页", m_navControlsWidget);
+    m_pageLabel = new QLabel("第 1 页 / 共 1 页", m_navControlsWidget);
+    m_nextPageButton = new QPushButton("下一页 >", m_navControlsWidget);
+    m_lastPageButton = new QPushButton("尾页 >>", m_navControlsWidget);
 
-    m_firstPageButton = new QPushButton("<< 首页");
-    m_prevPageButton = new QPushButton("< 上一页");
-    m_pageLabel = new QLabel("第 1 页 / 共 1 页");
-    m_nextPageButton = new QPushButton("下一页 >");
-    m_lastPageButton = new QPushButton("尾页 >>");
+    m_navControlsLayout = new QHBoxLayout(m_navControlsWidget);
+    m_navControlsLayout->setContentsMargins(10, 5, 10, 5);
+    m_navControlsLayout->addStretch();
+    m_navControlsLayout->addWidget(m_firstPageButton);
+    m_navControlsLayout->addWidget(m_prevPageButton);
+    m_navControlsLayout->addWidget(m_pageLabel);
+    m_navControlsLayout->addWidget(m_nextPageButton);
+    m_navControlsLayout->addWidget(m_lastPageButton);
+    m_navControlsLayout->addStretch();
 
-
-    // --- 步骤 2: 创建并设置布局 ---
-    auto* navLayout = new QHBoxLayout();
-    navLayout->setContentsMargins(10, 5, 10, 5); // 增加一些边距，让UI更好看
-    navLayout->addStretch();
-    navLayout->addWidget(m_firstPageButton);
-    navLayout->addWidget(m_prevPageButton);
-    navLayout->addWidget(m_pageLabel);
-    navLayout->addWidget(m_nextPageButton);
-    navLayout->addWidget(m_lastPageButton);
-    navLayout->addStretch();
-
-    // 设置主窗口的垂直布局
     m_mainLayout = new QVBoxLayout(this);
     m_mainLayout->setContentsMargins(0, 0, 0, 0);
     m_mainLayout->setSpacing(0);
 
-    // --- 步骤 3: 将已创建的控件按正确关系添加到主布局中 ---
-
-    // 关键布局：表格占据所有可用空间(拉伸因子=1)，导航条保持固定高度(拉伸因子=0)
+    m_table->setParent(this); // Set parent
     m_mainLayout->addWidget(m_table, 1);
-    m_mainLayout->addLayout(navLayout, 0);
+    m_mainLayout->addWidget(m_navControlsWidget, 0);
 
+    this->setWindowTitle("通用数据表格");
+    this->setWindowIcon(QIcon(":/MutiTableWidget/m_icon/table.png")); 
 
-    // --- 步骤 4: 设置窗口属性和连接信号槽 ---
-
-    this->setWindowTitle("实时数据表格");
-    this->setWindowIcon(QIcon(":/state_table/table.png"));
-
-    // 连接按钮点击信号到表格的翻页槽
     connect(m_firstPageButton, &QPushButton::clicked, m_table, &BaseDataTable::goToFirstPage);
     connect(m_prevPageButton, &QPushButton::clicked, m_table, &BaseDataTable::goToPreviousPage);
     connect(m_nextPageButton, &QPushButton::clicked, m_table, &BaseDataTable::goToNextPage);
     connect(m_lastPageButton, &QPushButton::clicked, m_table, &BaseDataTable::goToLastPage);
-
-    // 连接表格的页码变化信号到导航条的更新槽
     connect(m_table, &BaseDataTable::pageChanged, this, &PaginatedDataTable::updateNavigationControls);
 
-    // 初始化UI状态
     updateNavigationControls(1, 1);
 }
 

@@ -7,5 +7,6 @@ class RealtimeDataTable : public BaseDataTable {
 public:
     explicit RealtimeDataTable(QWidget* parent = nullptr);
 protected:
-    void checkAndHighlightRow(int displayRow, const QVector<QString>& rowData) override;
+    //void checkAndHighlightRow(int displayRow, const QVector<QString>& rowData) override;
+    void checkAndHighlightRow(int row) override;
 };

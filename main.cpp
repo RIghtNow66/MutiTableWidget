@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     PaginatedDataTable window(table);
     window.resize(800, 600);
-    window.setWindowTitle("通用数据表格展示");
+    window.setWindowTitle("状态数据表格");
 
     // 填充测试数据（示例）
     QVector<QVector<QString>> statusData = {

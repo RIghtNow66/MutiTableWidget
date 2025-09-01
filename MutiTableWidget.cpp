@@ -1,7 +1,6 @@
 #pragma execution_character_set("utf-8")
 
 #include "MutiTableWidget.h"
-#include "HighlightDelegate.h"
 #include <QHeaderView>
 #include <QPainter>
 #include <QPaintEvent>
@@ -56,14 +55,27 @@ BaseDataTable::BaseDataTable(QWidget* parent)
     setSelectionBehavior(QAbstractItemView::SelectItems);
     this->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
     this->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-    setItemDelegate(new HighlightDelegate(this));
     m_resizeThrottleTimer.start();
     connect(horizontalHeader(), &QHeaderView::sectionResized, this, &BaseDataTable::onSectionResized);
 
     // 连接表头的筛选信号到处理槽
     connect(newHeader, &NonSortingHeaderView::filterTriggered, this, &BaseDataTable::applyFilter);
+
+    connect(newHeader, &NonSortingHeaderView::clearFilterTriggered, this, &BaseDataTable::clearFilter);
 }
 
+void BaseDataTable::clearFilter(int logicalIndex)
+{
+    if (m_activeFilters.contains(logicalIndex)) {
+        m_activeFilters.remove(logicalIndex);
+
+        auto* header = qobject_cast<NonSortingHeaderView*>(horizontalHeader());
+        if (header) {
+            header->setFilterState(logicalIndex, false);
+        }
+        applyFiltersAndDisplay();
+    }
+}
 
 void BaseDataTable::onSectionResized(int logicalIndex, int oldSize, int newSize)
 {
@@ -172,6 +184,9 @@ void BaseDataTable::updateColumnLayout()
 // 弹出筛选对话框的槽函数
 void BaseDataTable::applyFilter(int logicalIndex)
 {
+    // ★ 关键改动：移除了函数开头的 if 判断，现在此函数只负责打开对话框
+    auto* header = qobject_cast<NonSortingHeaderView*>(horizontalHeader());
+
     QSet<QString> uniqueValues;
     for (const auto& rowData : m_fullData) {
         if (logicalIndex < rowData.size()) {
@@ -182,6 +197,7 @@ void BaseDataTable::applyFilter(int logicalIndex)
     QDialog filterDialog(this);
     filterDialog.setWindowTitle(QString("筛选: %1").arg(m_headers[logicalIndex]));
 
+    // ... (对话框的剩余代码保持不变) ...
     QVBoxLayout* layout = new QVBoxLayout(&filterDialog);
     QList<QCheckBox*> checkBoxes;
     QWidget* checkBoxContainer = new QWidget;
@@ -212,18 +228,15 @@ void BaseDataTable::applyFilter(int logicalIndex)
     QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Reset, &filterDialog);
     connect(buttonBox, &QDialogButtonBox::accepted, &filterDialog, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, &filterDialog, &QDialog::reject);
-    connect(buttonBox->button(QDialogButtonBox::Reset), &QPushButton::clicked, [this, logicalIndex, &filterDialog]() {
-        if (m_activeFilters.contains(logicalIndex)) {
-            m_activeFilters.remove(logicalIndex);
-            horizontalHeader()->model()->setHeaderData(logicalIndex, Qt::Horizontal, m_headers[logicalIndex], Qt::DisplayRole);
-            applyFiltersAndDisplay();
-        }
-        filterDialog.reject(); // 关闭对话框
+
+    // Reset 按钮的逻辑已经是正确的，它调用 clearFilter
+    connect(buttonBox->button(QDialogButtonBox::Reset), &QPushButton::clicked, this, [this, logicalIndex, &filterDialog]() {
+        clearFilter(logicalIndex);
+        filterDialog.reject();
         });
 
     layout->addWidget(buttonBox);
 
-    // 当用户在筛选对话框点击 "确定" 后
     if (filterDialog.exec() == QDialog::Accepted) {
         QSet<QString> selectedValues;
         for (const auto& checkBox : checkBoxes) {
@@ -232,28 +245,18 @@ void BaseDataTable::applyFilter(int logicalIndex)
             }
         }
 
-        // 获取自定义表头的指针
-        auto* header = qobject_cast<NonSortingHeaderView*>(horizontalHeader());
-
-        // 检查本次筛选是否有效 (即用户没有全选或全不选)
         if (selectedValues.isEmpty() || selectedValues.size() == uniqueValues.size()) {
-            // 筛选无效，等同于清空此列的筛选
             m_activeFilters.remove(logicalIndex);
             if (header) {
-                // 通知表头移除这一列的图标
                 header->setFilterState(logicalIndex, false);
             }
         }
         else {
-            // 筛选有效
             m_activeFilters[logicalIndex] = selectedValues;
             if (header) {
-                // 通知表头在这一列显示图标
                 header->setFilterState(logicalIndex, true);
             }
         }
-
-        // 应用所有激活的筛选条件并刷新表格
         applyFiltersAndDisplay();
     }
 }
@@ -345,7 +348,6 @@ void BaseDataTable::displayCurrentPage()
             it->setTextAlignment(Qt::AlignCenter);
             setItem(displayRow, c, it);
         }
-        checkAndHighlightRow(displayRow, rowData);
     }
 
     if (m_isInitialLayout) {
@@ -429,7 +431,7 @@ void BaseDataTable::adjustRowHeightAndFont()
     QFont font;
     font.setPointSize(m_currentPointSize);
     QFontMetrics fm(font);
-    int verticalPadding = 20;
+    int verticalPadding = 16;
     int comfortableMinHeight = fm.height() + verticalPadding;
     int fillHeight = viewport()->height() / m_pageSize;
     int finalRowHeight = std::max(comfortableMinHeight, fillHeight);
