@@ -101,7 +101,6 @@
     <ClCompile Include="RealtimeDataTable.cpp" />
     <ClCompile Include="RealtimeTableDelegate.cpp" />
     <ClCompile Include="StateTableDelegate.cpp" />
-    <ClCompile Include="UniversalDelegate.cpp" />
     <QtRcc Include="MutiTableWidget.qrc" />
     <QtUic Include="MutiTableWidget.ui" />
     <QtMoc Include="MutiTableWidget.h" />
@@ -117,7 +116,6 @@
   <ItemGroup>
     <QtMoc Include="FaultyStatusTable.h" />
     <QtMoc Include="RealtimeDataTable.h" />
-    <QtMoc Include="UniversalDelegate.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CombinedStateTable.h" />

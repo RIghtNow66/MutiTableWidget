@@ -46,9 +46,6 @@
     <ClCompile Include="HighlightDelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UniversalDelegate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RealtimeDataTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,9 +79,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="FaultyStatusTable.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="UniversalDelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="CombinedStateTable.h">

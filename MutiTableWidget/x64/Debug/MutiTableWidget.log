@@ -4,12 +4,11 @@
   uic MutiTableWidget.ui
   rcc MutiTableWidget.qrc
   moc MutiTableWidget.h
-  moc NonSortingHeaderView.h
    RCC: Warning: No resources in 'D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget.qrc'.
+  moc NonSortingHeaderView.h
   moc HighlightDelegate.h
   moc FaultyStatusTable.h
   moc RealtimeDataTable.h
-  moc UniversalDelegate.h
   moc CombinedStateTable.h
   moc RealtimeTableDelegate.h
   moc FaultyTableDelegate.h
@@ -24,7 +23,6 @@
   RealtimeDataTable.cpp
   RealtimeTableDelegate.cpp
   StateTableDelegate.cpp
-  UniversalDelegate.cpp
   MutiTableWidget.cpp
   main.cpp
   qrc_MutiTableWidget.cpp
@@ -33,7 +31,6 @@
   moc_HighlightDelegate.cpp
   moc_FaultyStatusTable.cpp
   moc_RealtimeDataTable.cpp
-  moc_UniversalDelegate.cpp
   moc_CombinedStateTable.cpp
   moc_RealtimeTableDelegate.cpp
   moc_FaultyTableDelegate.cpp
