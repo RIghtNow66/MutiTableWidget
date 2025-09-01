@@ -1,4 +1,42 @@
 ﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (D:/QT/5.15.2/msvc2015_64/bin/qmake)
    Qt: 5.15.2
+  uic MutiTableWidget.ui
+  rcc MutiTableWidget.qrc
+  moc MutiTableWidget.h
+  moc NonSortingHeaderView.h
+   RCC: Warning: No resources in 'D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget.qrc'.
+  moc HighlightDelegate.h
+  moc FaultyStatusTable.h
+  moc RealtimeDataTable.h
+  moc UniversalDelegate.h
+  moc CombinedStateTable.h
+  moc RealtimeTableDelegate.h
+  moc FaultyTableDelegate.h
+  moc StateTableDelegate.h
+  moc PaginatedDataTable.h
+  CombinedStateTable.cpp
+  FaultyStatusTable.cpp
+  FaultyTableDelegate.cpp
+  HighlightDelegate.cpp
+  NonSortingHeaderView.cpp
+  PaginatedDataTable.cpp
+  RealtimeDataTable.cpp
+  RealtimeTableDelegate.cpp
+  StateTableDelegate.cpp
+  UniversalDelegate.cpp
+  MutiTableWidget.cpp
   main.cpp
-  MutiTableWidget.vcxproj -> D:\QTlearn\MutiTableWidget\x64\Debug\MutiTableWidget.exe
+  qrc_MutiTableWidget.cpp
+  moc_MutiTableWidget.cpp
+  moc_NonSortingHeaderView.cpp
+  moc_HighlightDelegate.cpp
+  moc_FaultyStatusTable.cpp
+  moc_RealtimeDataTable.cpp
+  moc_UniversalDelegate.cpp
+  moc_CombinedStateTable.cpp
+  moc_RealtimeTableDelegate.cpp
+  moc_FaultyTableDelegate.cpp
+  moc_StateTableDelegate.cpp
+  moc_PaginatedDataTable.cpp
+  MutiTableWidget.vcxproj -> D:\AAA_myLibrary\MutiTableWidget\x64\Debug\MutiTableWidget.exe

@@ -94,10 +94,13 @@
   <ItemGroup>
     <ClCompile Include="CombinedStateTable.cpp" />
     <ClCompile Include="FaultyStatusTable.cpp" />
+    <ClCompile Include="FaultyTableDelegate.cpp" />
     <ClCompile Include="HighlightDelegate.cpp" />
     <ClCompile Include="NonSortingHeaderView.cpp" />
     <ClCompile Include="PaginatedDataTable.cpp" />
     <ClCompile Include="RealtimeDataTable.cpp" />
+    <ClCompile Include="RealtimeTableDelegate.cpp" />
+    <ClCompile Include="StateTableDelegate.cpp" />
     <ClCompile Include="UniversalDelegate.cpp" />
     <QtRcc Include="MutiTableWidget.qrc" />
     <QtUic Include="MutiTableWidget.ui" />
@@ -118,6 +121,17 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CombinedStateTable.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="RealtimeTableDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="FaultyTableDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="StateTableDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
     <QtMoc Include="PaginatedDataTable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

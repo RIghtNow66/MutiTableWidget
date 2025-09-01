@@ -58,6 +58,15 @@
     <ClCompile Include="CombinedStateTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RealtimeTableDelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FaultyTableDelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StateTableDelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="PaginatedDataTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,10 +87,19 @@
     <QtMoc Include="UniversalDelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="PaginatedDataTable.h">
+    <QtMoc Include="CombinedStateTable.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="CombinedStateTable.h">
+    <QtMoc Include="RealtimeTableDelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FaultyTableDelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="StateTableDelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PaginatedDataTable.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

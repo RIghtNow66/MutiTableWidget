@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\QTlearn\MutiTableWidget\MutiTableWidget\x64\Debug\qt\qmake;D:\QT\5.15.2\msvc2015_64\include;D:\QT\5.15.2\msvc2015_64\include\QtWidgets;D:\QT\5.15.2\msvc2015_64\include\QtGui;D:\QT\5.15.2\msvc2015_64\include\QtANGLE;D:\QT\5.15.2\msvc2015_64\include\QtCore;D:\QTlearn\MutiTableWidget\MutiTableWidget\x64\Debug\qt\qmake;/include;D:\QT\5.15.2\msvc2015_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\qmake;D:\QT\5.15.2\msvc2015_64\include;D:\QT\5.15.2\msvc2015_64\include\QtWidgets;D:\QT\5.15.2\msvc2015_64\include\QtGui;D:\QT\5.15.2\msvc2015_64\include\QtANGLE;D:\QT\5.15.2\msvc2015_64\include\QtCore;D:\AAA_myLibrary\MutiTableWidget\MutiTableWidget\x64\Debug\qt\qmake;/include;D:\QT\5.15.2\msvc2015_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>.\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>

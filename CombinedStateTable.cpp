@@ -1,16 +1,11 @@
 #include "CombinedStateTable.h"
-#include "UniversalDelegate.h"
+#include "StateTableDelegate.h"
 #include <QTableWidgetItem>
 #include <QStringList>
 
 CombinedStateTable::CombinedStateTable(QWidget* parent) : BaseDataTable(parent)
 {
-    auto* delegate = new UniversalDelegate(this);
-
-    // 配置1: 告诉委托，第3列（索引为2）需要被绘制成状态圆点。
-    delegate->setStatusCircleColumn(2);
-
-    setItemDelegate(delegate);
+    setItemDelegate(new StateTableDelegate(this));
 }
 
 void CombinedStateTable::checkAndHighlightRow(int displayRow, const QVector<QString>& rowData)

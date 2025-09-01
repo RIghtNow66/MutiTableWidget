@@ -1,11 +1,11 @@
 #include "RealtimeDataTable.h"
-#include "UniversalDelegate.h"
+#include "RealtimeTableDelegate.h"
 #include <QTableWidgetItem>
 
 
 RealtimeDataTable::RealtimeDataTable(QWidget* parent) : BaseDataTable(parent) {
     // 设置委托，但不需要配置画圆点
-    setItemDelegate(new UniversalDelegate(this));
+    setItemDelegate(new RealtimeTableDelegate(this));
 }
 
 void RealtimeDataTable::checkAndHighlightRow(int displayRow, const QVector<QString>& rowData) {
