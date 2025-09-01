@@ -1,0 +1,6 @@
+# Visual Studio 临时文件（必须忽略！）
+.vs/
+*.ipch
+*.db
+*.suo
+*.user

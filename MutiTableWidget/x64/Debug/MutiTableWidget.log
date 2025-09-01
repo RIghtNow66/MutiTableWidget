@@ -1,0 +1,4 @@
+﻿   Qt/MSBuild: 3.4.1.0
+   Qt: 5.15.2
+  main.cpp
+  MutiTableWidget.vcxproj -> D:\QTlearn\MutiTableWidget\x64\Debug\MutiTableWidget.exe
