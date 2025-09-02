@@ -40,9 +40,6 @@
     <ClCompile Include="NonSortingHeaderView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HighlightDelegate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RealtimeDataTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -67,9 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="NonSortingHeaderView.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="HighlightDelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="RealtimeDataTable.h">

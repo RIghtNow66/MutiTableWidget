@@ -16,6 +16,7 @@ void RealtimeTableDelegate::paint(QPainter* painter, const QStyleOptionViewItem&
         viewOption.font = font;
     }
 
+    //QStyledItemDelegate::paint(painter, viewOption, index);
     QApplication::style()->drawControl(QStyle::CE_ItemViewItem, &viewOption, painter, viewOption.widget);
 }
 

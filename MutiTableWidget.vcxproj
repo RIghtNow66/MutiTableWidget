@@ -95,7 +95,6 @@
     <ClCompile Include="CombinedStateTable.cpp" />
     <ClCompile Include="FaultyStatusTable.cpp" />
     <ClCompile Include="FaultyTableDelegate.cpp" />
-    <ClCompile Include="HighlightDelegate.cpp" />
     <ClCompile Include="NonSortingHeaderView.cpp" />
     <ClCompile Include="PaginatedDataTable.cpp" />
     <ClCompile Include="RealtimeDataTable.cpp" />
@@ -108,9 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="NonSortingHeaderView.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="HighlightDelegate.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="FaultyStatusTable.h" />

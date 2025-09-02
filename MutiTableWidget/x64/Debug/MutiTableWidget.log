@@ -1,21 +1,5 @@
 ﻿   Qt/MSBuild: 3.4.1.0
    Qt: 5.15.2
-  moc MutiTableWidget.h
-  moc NonSortingHeaderView.h
-  CombinedStateTable.cpp
-  FaultyStatusTable.cpp
-  FaultyTableDelegate.cpp
-  HighlightDelegate.cpp
-  MutiTableWidget.cpp
-  NonSortingHeaderView.cpp
-  PaginatedDataTable.cpp
   RealtimeDataTable.cpp
   RealtimeTableDelegate.cpp
-  StateTableDelegate.cpp
-  main.cpp
-  moc_CombinedStateTable.cpp
-  moc_FaultyStatusTable.cpp
-  moc_MutiTableWidget.cpp
-  moc_NonSortingHeaderView.cpp
-  moc_RealtimeDataTable.cpp
   MutiTableWidget.vcxproj -> D:\AAA_myLibrary\MutiTableWidget\x64\Debug\MutiTableWidget.exe
