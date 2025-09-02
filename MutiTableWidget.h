@@ -40,9 +40,7 @@ protected:
     void resizeEvent(QResizeEvent* event) override;
 
     // ★ 模板方法：定义高亮检查的接口，由子类实现具体逻辑
-    virtual void checkAndHighlightRow(int row) {
-        // 基类默认实现为空，即不做任何高亮处理
-    }
+    virtual void checkAndHighlightRow(int row) {}
 
     QVector<QVector<QString>> m_fullData;
     QStringList m_headers;

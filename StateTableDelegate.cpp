@@ -34,7 +34,7 @@ void StateTableDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
         ellipseRect.moveCenter(option.rect.center());
 
         if (status == "0") {
-            painter->setBrush(QBrush(QColor("#28a745"))); // Green
+            painter->setBrush(QBrush(Qt::blue)); // Blue
         }
         else if (status == "1") {
             painter->setBrush(QBrush(QColor("#dc3545"))); // Red

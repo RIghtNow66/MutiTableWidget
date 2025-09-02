@@ -1,5 +1,4 @@
 ﻿   Qt/MSBuild: 3.4.1.0
    Qt: 5.15.2
-  RealtimeDataTable.cpp
-  RealtimeTableDelegate.cpp
+  StateTableDelegate.cpp
   MutiTableWidget.vcxproj -> D:\AAA_myLibrary\MutiTableWidget\x64\Debug\MutiTableWidget.exe

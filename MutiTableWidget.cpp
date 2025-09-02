@@ -348,6 +348,7 @@ void BaseDataTable::displayCurrentPage()
             it->setTextAlignment(Qt::AlignCenter);
             setItem(displayRow, c, it);
         }
+        checkAndHighlightRow(displayRow);
     }
 
     if (m_isInitialLayout) {
